@@ -5,7 +5,7 @@
 defined( 'ABSPATH' ) || exit();
 
 class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
-	private static ?FARAZSMS_CLUB $_instance = null;
+	private static  $_instance = null;
 
 	public function __construct() {
 		$this->include_all();

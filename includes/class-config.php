@@ -5,32 +5,32 @@
 defined( 'ABSPATH' ) || exit();
 
 if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
-	class FARAZSMS_CLUB_CONFIG  extends FARAZSMS_CLUB_BASE {
-		private static ?FARAZSMS_CLUB_CONFIG $_instance = null;
-		private static string $_url = "https://ippanel.com/api/select";
-		private static bool $_woo_sms_installed = false;
-		private static bool $_woo_installed = false;
-		private static bool $_digits_installed = false;
-		private static array $_options = [];
+	class FARAZSMS_CLUB_CONFIG extends FARAZSMS_CLUB_BASE {
+		private static $_instance = null;
+		private static $_url = "https://ippanel.com/api/select";
+		private static $_woo_sms_installed = false;
+		private static $_woo_installed = false;
+		private static $_digits_installed = false;
+		private static $_options = [];
 		/*
 		 * @var $_digits_phoneBookId int[]
 		 * */
-		private static array $_digits_phoneBookId;
-		private static string $_digits_uname;
-		private static string $_digits_password;
+		private static $_digits_phoneBookId;
+		private static $_digits_uname;
+		private static $_digits_password;
 		/*
 		 * @var $_woo_phoneBookId int[]
 		 * */
-		private static array $_woo_phoneBookId;
-		private static string $_woo_uname;
-		private static string $_woo_password;
-		private static string $_number;
-		private static ?string $_table_name = null;
+		private static $_woo_phoneBookId;
+		private static $_woo_uname;
+		private static $_woo_password;
+		private static $_number;
+		private static $_table_name = null;
 
 		/**
 		 * @return string
 		 */
-		public static function tableName(): string {
+		public static function tableName() {
 			if ( ! self::$_table_name ) {
 				global $wpdb;
 				self::$_table_name = $wpdb->prefix . 'farazsms_contacts';
@@ -63,7 +63,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return FARAZSMS_CLUB_CONFIG
 		 */
-		public static function getInstance(): FARAZSMS_CLUB_CONFIG {
+		public static function getInstance() {
 			if ( ! self::$_instance ) {
 				self::$_instance = new self();
 			}
@@ -108,14 +108,14 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function url(): string {
+		public static function url() {
 			return self::$_url;
 		}
 
 		/**
 		 * @return bool
 		 */
-		public static function isWooSmsInstalled(): bool {
+		public static function isWooSmsInstalled() {
 			return self::$_woo_sms_installed;
 		}
 
@@ -123,21 +123,21 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return bool
 		 */
-		public static function isDigitsInstalled(): bool {
+		public static function isDigitsInstalled() {
 			return self::$_digits_installed;
 		}
 
 		/**
 		 * @return bool
 		 */
-		public static function isWooInstalled(): bool {
+		public static function isWooInstalled() {
 			return self::$_woo_installed;
 		}
 
 		/**
 		 * @return string
 		 */
-		public function digitsPhoneBookId(): string {
+		public function digitsPhoneBookId() {
 			return $this->_digits_phoneBookId;
 		}
 
@@ -145,7 +145,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function digitsUname(): string {
+		public static function digitsUname() {
 			return self::$_digits_uname;
 		}
 
@@ -153,7 +153,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function digitsPassword(): string {
+		public static function digitsPassword() {
 			return self::$_digits_password;
 		}
 
@@ -161,7 +161,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return array
 		 */
-		public static function wooPhoneBookId(): string {
+		public static function wooPhoneBookId() {
 			return self::$_woo_phoneBookId;
 		}
 
@@ -169,7 +169,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function wooUname(): string {
+		public static function wooUname() {
 			return self::$_woo_uname;
 		}
 
@@ -177,7 +177,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function wooPassword(): string {
+		public static function wooPassword() {
 			return self::$_woo_password;
 		}
 
@@ -185,14 +185,14 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		/**
 		 * @return string
 		 */
-		public static function number(): string {
+		public static function number() {
 			return self::$_number;
 		}
 
 		/**
 		 * @param string $number
 		 */
-		public static function setNumber( string $number ): void {
+		public static function setNumber( $number ) {
 			self::$_number = $number;
 		}
 
@@ -268,7 +268,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		 *
 		 * @return array
 		 */
-		public static function options( $force = false ): array {
+		public static function options( $force = false ) {
 			if ( ! self::$_options || $force ) {
 				$options = get_option( 'farazsms_options' );
 				if ( ! $options ) {
@@ -317,8 +317,10 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		public static function db_find_one( $phone, $phone_book ) {
 			global $wpdb;
 			$table_name = self::tableName();
-			$query      = "select * from $table_name where phone=$phone and phone_book=$phone_book";
-			return      $wpdb->get_results( $query );
+			$query      = sprintf( "select * from %s where phone=%s and phone_book=%s",
+				$table_name, $phone, $phone_book );
+
+			return $wpdb->get_results( $query );
 		}
 
 		/**
@@ -334,57 +336,68 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		public static function db_save( $meta ) {
 			global $wpdb;
 			$table_name = self::tableName();
-			return  $wpdb->insert( $table_name, $meta );
+
+			return $wpdb->insert( $table_name, $meta );
 		}
-		public static function save_to_digits_phone_book($phone,$phone_book){
-			if(!self::isDigitsInstalled())return;
+
+		public static function save_to_digits_phone_book( $phone, $phone_book ) {
+			if ( ! self::isDigitsInstalled() ) {
+				return;
+			}
 			$body = array(
-				'uname'=>self::digitsUname(),
-				'pass'=>self::digitsPassword(),
-				'op'=>'phoneBookAdd',
-				'phoneBookId'=>$phone_book,
-				'number'=>$phone
+				'uname'       => self::digitsUname(),
+				'pass'        => self::digitsPassword(),
+				'op'          => 'phoneBookAdd',
+				'phoneBookId' => $phone_book,
+				'number'      => $phone
 			);
 
-			$response = wp_remote_post(self::url(), array(
-					'method' => 'POST',
-					'headers' => [
+			$response = wp_remote_post( self::url(), array(
+					'method'      => 'POST',
+					'headers'     => [
 						'Content-Type' => 'application/json',
 					],
 					'data_format' => 'body',
-					'body' => json_encode($body)
+					'body'        => json_encode( $body )
 				)
 			);
-			$response = json_decode($response['body']);
-			if($response->status->code !== 0) return false;
+			$response = json_decode( $response['body'] );
+			if ( $response->status->code !== 0 ) {
+				return false;
+			}
+
 			return true;
 		}
-		public static function save_to_woo_phone_book($phone,$phone_book){
+
+		public static function save_to_woo_phone_book( $phone, $phone_book ) {
 			$uname = self::options()['uname'];
-			$pass = self::options()['pass'];
-			if(self::isWooSmsInstalled()){
-				$uname=self::wooUname();
-				$pass=self::wooPassword();
-			};
+			$pass  = self::options()['pass'];
+			if ( self::isWooSmsInstalled() ) {
+				$uname = self::wooUname();
+				$pass  = self::wooPassword();
+			}
 			$body = array(
-				'uname'=>$uname,
-				'pass'=>$pass,
-				'op'=>'phoneBookAdd',
-				'phoneBookId'=>$phone_book,
-				'number'=>$phone
+				'uname'       => $uname,
+				'pass'        => $pass,
+				'op'          => 'phoneBookAdd',
+				'phoneBookId' => $phone_book,
+				'number'      => $phone
 			);
 
-			$response = wp_remote_post(self::url(), array(
-					'method' => 'POST',
-					'headers' => [
+			$response = wp_remote_post( self::url(), array(
+					'method'      => 'POST',
+					'headers'     => [
 						'Content-Type' => 'application/json',
 					],
 					'data_format' => 'body',
-					'body' => json_encode($body)
+					'body'        => json_encode( $body )
 				)
 			);
-			$response = json_decode($response['body']);
-			if($response->status->code !== 0) return false;
+			$response = json_decode( $response['body'] );
+			if ( $response->status->code !== 0 ) {
+				return false;
+			}
+
 			return true;
 		}
 
