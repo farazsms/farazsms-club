@@ -1,2 +1,1 @@
-# bank-mashaghel
-
+# FarazSMS-Club V1.0
