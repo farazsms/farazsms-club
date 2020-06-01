@@ -19,7 +19,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 		add_action( 'admin_menu', [ $this, 'settings' ] );
 		add_filter('update_user_metadata',[$this,'updated_user_meta'],10,4);
 		if(class_exists('WooCommerce'))
-		    add_action('woocommerce_thankyou',[$this,'woo_payment_finished']);
+		    {add_action('woocommerce_thankyou',[$this,'woo_payment_finished']);}
     if (get_transient('farazsms-club-admin_notice')){
         add_action('admin_notices',[$this,'admin_notices_activated']);
     }
@@ -45,6 +45,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 			false,
 			basename( dirname( FARAZSMS_CLUB_INDEX_FILE ) ) . '/languages' );
 	}
+
 
 	public static function get_instance() {
 		if ( self::$_instance == null ) {
@@ -360,7 +361,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	    $config=FARAZSMS_CLUB_CONFIG::getInstance();
 	    $phone_books=$config::options()['digits'];
         foreach ($phone_books as $phone_book){
-            if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) continue;
+            if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) {continue;}
             $phones = array(                "phone"=>$phone,
 	                                        "from_meta"=>'user',
 	                                        "object_id"=>$object_id,
@@ -368,18 +369,18 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	                                        "l_name"=>$user->last_name,
 	                                        "phone_book"=>$phone_book
 	                                        );
-            if($config::save_to_digits_phone_book($phone,$phone_book)) $config::db_save($phones);
+            if($config::save_to_digits_phone_book($phone,$phone_book)) {$config::db_save($phones);}
         }
     }
     function woo_payment_finished($id){
 	    $order=get_post_meta($id);
 	    $phone = $order['_billing_phone'];
-	    if(!$phone)return;
+	    if(!$phone){return;}
 	    $phone = intval(substr($phone[0],-10));
 	    $config=FARAZSMS_CLUB_CONFIG::getInstance();
 	    $phone_books=$config::options()['woo'];
 	    foreach ($phone_books as $phone_book){
-	        if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) continue;
+	        if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) {continue;}
             $phones = array(                "phone"=>$phone,
 	                                        "from_meta"=>'post',
 	                                        "object_id"=>$id,
@@ -387,7 +388,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	                                        "l_name"=>$order['_billing_last_name'],
 	                                        "phone_book"=>$phone_book
 	                                        );
-            if($config::save_to_woo_phone_book($phone,$phone_book)) $config::db_save($phones);
+            if($config::save_to_woo_phone_book($phone,$phone_book)) {$config::db_save($phones);}
 	    }
 	    self::err_log($order);
     }
