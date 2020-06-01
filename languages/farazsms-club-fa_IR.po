@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: farazsms-club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-28 06:42+0000\n"
-"PO-Revision-Date: 2020-05-28 06:42+0000\n"
+"POT-Creation-Date: 2020-06-01 11:11+0000\n"
+"PO-Revision-Date: 2020-06-01 11:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: فارسی\n"
 "Language: fa_IR\n"
@@ -14,15 +14,23 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.0; wp-5.4.1"
 
-#: includes/class-core.php:64
-#, php-format
+#: includes/class-core.php:74
+#, fuzzy, php-format
+#| "<h2> Special Offer </h2>\n"
+#| "                 By registering in the sales cooperation system and "
+#| "introducing the Faraz SMS SMS system to your friends, 30% cooperation fee "
+#| "in\n"
+#| "                 Get sales.\n"
+#| "\n"
+#| "                 <a href=\"https://farazsms.com/affiliate\" "
+#| "target=\"_blank\" rel=\"noopener\"> More info and start earning money\n"
+#| "                     Internet </a>"
 msgid ""
 "<h2> Special Offer </h2>\n"
 "                 By registering in the sales cooperation system and "
 "introducing the Faraz SMS SMS system to your friends, 30% cooperation fee "
 "in\n"
 "                 Get sales.\n"
-"\n"
 "                 <a href=\"https://farazsms.com/affiliate\" "
 "target=\"_blank\" rel=\"noopener\"> More info and start earning money\n"
 "                     Internet </a>"
@@ -36,39 +44,71 @@ msgstr ""
 "rel=\"noopener\">اطلاعات بیشتر و شروع کسب درامد\n"
 "                    اینترنتی </a>\n"
 
-#: includes/class-core.php:179
+#: includes/class-core.php:188
 msgid "FarazSMS Options"
 msgstr "تنظیمات فرازاس‌ام‌اس"
 
-#: includes/class-core.php:211
+#: includes/class-core.php:220
 msgid "successfully saved"
 msgstr "ذخیره شد"
 
-#: includes/class-core.php:224
+#: includes/class-core.php:233
 msgid "help"
 msgstr "راهنما"
 
-#: includes/class-core.php:230
+#: includes/class-core.php:239
 msgid "Phonebook"
 msgstr "دفترتلفن"
 
-#: includes/class-core.php:236
+#: includes/class-core.php:245
 msgid "Username and password"
 msgstr "نام کاربری و رمز عبور"
 
-#: includes/class-core.php:264
+#: includes/class-core.php:252
+msgid ""
+"<h1> Guide to Customer Club </h1>\n"
+"                <br>\n"
+"                First, log in to your account in the SMS system above SMS, "
+"from the right menu> Phonebook> Group\n"
+"                Create a new phonebook, create a unique code for each "
+"phonebook after creating the system phonebook\n"
+"                Allows the person to put the phonebook with the username, "
+"password and code on this page and save the settings.\n"
+"                From now on, the mobile number of WooCommerce and Digits "
+"customers will be automatically in the phone book of Faraz SMS SMS system.\n"
+"                Your S will be saved. If you have not yet purchased the SMS "
+"system, use the farazsms-club discount code.\n"
+"                <br>\n"
+"                <br>"
+msgstr ""
+" <h1>راهنما استفاده از باشگاه مشتریان</h1>\n"
+"                <br>\n"
+"                ابتدا وارد حساب کاربری خود در سامانه پیامکی فراز اس ام اس "
+"شوید، از منو سمت راست > دفترچه تلفن > گروه\n"
+"                دفترچه تلفن یک دفترچه جدید ایجاد نمایید، بعد از ایجاد دفترچه "
+"تلفن سامانه برای هر دفترچه تلفن یک کد منحصر\n"
+"                به فرد می دهد همراه با نام کاربری ، رمز و کد دفترچه تلفن در "
+"این صفحه قرار داده و تنظیمات را ذخیره کنید\n"
+"                از این پس شماره موبایل مشتریان ووکامرس و دیجیتس به صورت "
+"خودکار در دفترچه تلفن سامانه پیامکی فراز اس ام\n"
+"                اس شما ذخیره می شود. در صورتی که هنوز سامانه پیامک را "
+"خریداری نکرده اید از کد تخفیف farazsms-club استفاده نمایید.\n"
+"                <br>\n"
+"                <br>"
+
+#: includes/class-core.php:273
 msgid "Digits Plugin"
 msgstr "افزونه دیجیتز"
 
-#: includes/class-core.php:276
+#: includes/class-core.php:285
 msgid "WooCommerce"
 msgstr "ووکامرس"
 
-#: includes/class-core.php:289
+#: includes/class-core.php:298
 msgid "select phone books for "
 msgstr "انتخاب دفتر تلفن برای "
 
-#: includes/class-core.php:308 includes/class-core.php:323
+#: includes/class-core.php:317 includes/class-core.php:332
 msgid "save"
 msgstr "ذخیره"
 

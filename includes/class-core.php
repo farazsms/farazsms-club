@@ -9,23 +9,17 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 
 	public function __construct() {
 		$this->include_all();
-		add_action('activate_plugin',[$this,'activate_plugin']);
 		add_action( 'init', array( $this, 'add_languages_dir' ) );
-		add_action( 'get_footer', array( $this, 'load_css_farsi_font' ) );
-		add_action( 'wp_before_admin_bar_render', array( $this, 'wpb_custom_logo' ) );
-		add_action( 'edit_user_profile', [ $this, 'after_register' ] );
-		add_action( 'edit_user_profile_update', [ $this, 'after_register' ] );
-		add_action( 'activate_plugin', [ $this, 'default_options' ] );
+		add_action('activate_plugin',[$this,'activate_plugin']);
+//		add_action( 'get_footer', array( $this, 'load_css_farsi_font' ) );
+//		add_action( 'wp_before_admin_bar_render', array( $this, 'wpb_custom_logo' ) );
+//		add_action( 'edit_user_profile', [ $this, 'after_register' ] );
+//		add_action( 'edit_user_profile_update', [ $this, 'after_register' ] );
+//		add_action( 'activate_plugin', [ $this, 'default_options' ] );
 		add_action( 'admin_menu', [ $this, 'settings' ] );
 		add_filter('update_user_metadata',[$this,'updated_user_meta'],10,4);
-		add_action('woocommerce_thankyou',[$this,'woo_payment_finished']);
-		try {
-            add_action("woocommerce_thankyou",function ($post_id){
-                $get_post_meta = get_post_meta($post_id);
-
-            });
- }
-    catch (Exception $e){echo $e;}
+		if(class_exists('WooCommerce'))
+		    add_action('woocommerce_thankyou',[$this,'woo_payment_finished']);
     if (get_transient('farazsms-club-admin_notice')){
         add_action('admin_notices',[$this,'admin_notices_activated']);
     }
@@ -39,7 +33,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 		}
 	}
 
-        static function activate_plugin(){
+	static function activate_plugin(){
 //	    add_action( 'activate_plugin', [ $this, 'activate_plugin' ] );
         set_transient('farazsms-club-admin_notice',true,10);
                 FARAZSMS_CLUB_CONFIG::createdb();
@@ -181,7 +175,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	}
 
 	function default_options($force=false) {
-		return FARAZSMS_CLUB_CONFIG::options($force);
 	}
 
 	function settings() {
@@ -249,16 +242,16 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
             </div>
                 <?php if(strlen($help)> 0) {?>
                 <div>
+                <?php _e('<h1> Guide to Customer Club </h1>
+                <br>
+                First, log in to your account in the SMS system above SMS, from the right menu> Phonebook> Group
+                Create a new phonebook, create a unique code for each phonebook after creating the system phonebook
+                Allows the person to put the phonebook with the username, password and code on this page and save the settings.
+                From now on, the mobile number of WooCommerce and Digits customers will be automatically in the phone book of Faraz SMS SMS system.
+                Your S will be saved. If you have not yet purchased the SMS system, use the farazsms-club discount code.
+                <br>
+                <br>','farazsms-club') ?>
 
-                <h1>راهنما استفاده از باشگاه مشتریان</h1>
-                <br>
-                ابتدا وارد حساب کاربری خود در سامانه پیامکی فراز اس ام اس شوید، از منو سمت راست > دفترچه تلفن > گروه
-                دفترچه تلفن یک دفترچه جدید ایجاد نمایید، بعد از ایجاد دفترچه تلفن سامانه برای هر دفترچه تلفن یک کد منحصر
-                به فرد می دهد همراه با نام کاربری ، رمز و کد دفترچه تلفن در این صفحه قرار داده و تنظیمات را ذخیره کنید
-                از این پس شماره موبایل مشتریان ووکامرس و دیجیتس به صورت خودکار در دفترچه تلفن سامانه پیامکی فراز اس ام
-                اس شما ذخیره می شود. در صورتی که هنوز سامانه پیامک را خریداری نکرده اید از کد تخفیف saeb استفاده نمایید.
-                <br>
-                <br>
                 </div>
 <?php } ?>
                 <?php if(strlen($phonebook)> 0) {?>
