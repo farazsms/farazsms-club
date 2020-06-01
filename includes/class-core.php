@@ -46,7 +46,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 			basename( dirname( FARAZSMS_CLUB_INDEX_FILE ) ) . '/languages' );
 	}
 
-
 	public static function get_instance() {
 		if ( self::$_instance == null ) {
 			self::$_instance = new FARAZSMS_CLUB();
@@ -176,6 +175,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	}
 
 	function default_options($force=false) {
+	    return FARAZSMS_CLUB_CONFIG::options($force);
 	}
 
 	function settings() {
