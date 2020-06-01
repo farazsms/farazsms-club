@@ -185,16 +185,20 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 
     function settings_html() {
 	    $this->enqueue_select2_vue();
-	    $options = $this->default_options();
 		$configs = FARAZSMS_CLUB_CONFIG::getInstance();
+	    $options = $configs::options();
 		$plugins = array();
 	    $tab=$_GET['tab'];
 	    $help = '';
 	    $phonebook = '';
 	    $account = '';
+	    $credit =$configs::get_credit();
 	    if (strtolower($tab)=='phonebook'){$phonebook='class="is-active"';}
 	    else if (strtolower($tab)=='account'){$account='class="is-active"';}
 	    else {$help='class="is-active"';}
+	    	if(!$credit && strlen($account) < 1 && $_SERVER['REQUEST_METHOD']  != 'POST'){
+	        wp_redirect("?page=farazsms-club&tab=account");
+	    }
 		if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) == 'POST' ) {
 			$options     = FARAZSMS_CLUB_CONFIG::options();
 			if(strtolower($tab)==='phonebook'){
@@ -210,13 +214,11 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 			    $options['pass']=sanitize_text_field($_POST['pass']);
 			}
 			update_option( 'farazsms_options', $options );
-			$options = $this->default_options(true);
+			$options = $configs::options(true);
 			$successful = __('successfully saved','farazsms-club');
 			echo "<h3 class='is-success'>$successful</h3>";
 		}
-		if((strlen($options['uname'])<1 || strlen($options['pass'])<1) && strlen($account) < 1){
-	        wp_redirect("?page=farazsms-club&tab=account");
-	    }
+
 		?>
 		<div style="direction: rtl;margin-right: auto;margin-left: 0">
             <div class="tabs is-boxed is-centered is-medium" style="direction: rtl">
@@ -259,7 +261,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 
         <form  method="post" style="direction: rtl">
             <table class="form-table">
-                <h1>تنظیمات فعال سازی باشگاه مشتریان</h1>
+                <h1><?php _e('Phonebook Configs','farazsms-club') ?></h1>
 		<?php
 		if ( $configs::isDigitsInstalled() ) {
 			$plugins['digits'] = array(
@@ -312,14 +314,32 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	    echo "<tr><th><input type='submit' value='$save_btn' /></th></tr></table></form>";
 	    }
 	            if(strlen($account)>1){
+		$credit =$configs::get_credit();
 	        ?>
             <div>
             <form  method="post">
-            <table class="form-table"><tr>
-                <th style="text-align: right">نام کاربری</th>
+            <table class="form-table">
+            <?php if($credit) {?>
+            <tr>
+                <th style="text-align: right">
+                    <?php _e('Credit','farazsms-club') ?>
+                </th>
+
+                <td style="text-align: right"><?php echo $credit ?></td>
+                </tr>
+
+            <?php } else{?>
+            <th style="text-align: right">
+            <?php _e('It seems user name and password are not working yet are you saved them?','farazsms-club') ?>
+            </th>
+            <?php }?>
+
+
+            <tr>
+                <th style="text-align: right"><?php _e('User Name','farazsms-club') ?></th>
                 <td style="text-align: right"><input type="text" name="uname" value="<?php echo $options['uname']?>"></td>
                 </tr><tr>
-                <th style="text-align: right">رمزعبور</th>
+                <th style="text-align: right"><?php _e('password','farazsms-club') ?></th>
                 <td style="text-align: right"><input type="password" name="pass" value="<?php echo $options['pass']?>"></td>
                 </tr>
                 <tr>

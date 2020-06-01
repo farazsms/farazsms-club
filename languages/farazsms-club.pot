@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: farazsms-club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 11:11+0000\n"
+"POT-Creation-Date: 2020-06-01 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.0; wp-5.4.1"
 
-#: includes/class-core.php:74
+#: includes/class-core.php:68
 #, php-format
 msgid ""
 "<h2> Special Offer </h2>\n"
@@ -28,27 +28,27 @@ msgid ""
 "                     Internet </a>"
 msgstr ""
 
-#: includes/class-core.php:188
+#: includes/class-core.php:182
 msgid "FarazSMS Options"
 msgstr ""
 
-#: includes/class-core.php:220
+#: includes/class-core.php:218
 msgid "successfully saved"
 msgstr ""
 
-#: includes/class-core.php:233
+#: includes/class-core.php:229
 msgid "help"
 msgstr ""
 
-#: includes/class-core.php:239
+#: includes/class-core.php:235
 msgid "Phonebook"
 msgstr ""
 
-#: includes/class-core.php:245
+#: includes/class-core.php:241
 msgid "Username and password"
 msgstr ""
 
-#: includes/class-core.php:252
+#: includes/class-core.php:248
 msgid ""
 "<h1> Guide to Customer Club </h1>\n"
 "                <br>\n"
@@ -66,20 +66,40 @@ msgid ""
 "                <br>"
 msgstr ""
 
-#: includes/class-core.php:273
+#: includes/class-core.php:264
+msgid "Phonebook Configs"
+msgstr ""
+
+#: includes/class-core.php:269
 msgid "Digits Plugin"
 msgstr ""
 
-#: includes/class-core.php:285
+#: includes/class-core.php:281
 msgid "WooCommerce"
 msgstr ""
 
-#: includes/class-core.php:298
+#: includes/class-core.php:294
 msgid "select phone books for "
 msgstr ""
 
-#: includes/class-core.php:317 includes/class-core.php:332
+#: includes/class-core.php:313 includes/class-core.php:346
 msgid "save"
+msgstr ""
+
+#: includes/class-core.php:325
+msgid "Credit"
+msgstr ""
+
+#: includes/class-core.php:333
+msgid "It seems user name and password are not working yet are you saved them?"
+msgstr ""
+
+#: includes/class-core.php:339
+msgid "User Name"
+msgstr ""
+
+#: includes/class-core.php:342
+msgid "password"
 msgstr ""
 
 #. Name of the plugin

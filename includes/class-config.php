@@ -294,7 +294,28 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 
 			return self::$_options;
 		}
+		public static function get_credit(){
+			$options = self::options();
+			$body  = array(
+				"uname"=>$options['uname'],
+				"pass"=>$options['pass'],
+				'op'=>'credit'
+			);
+			$response = wp_remote_post( self::url(), array(
+					'method'      => 'POST',
+					'headers'     => [
+						'Content-Type' => 'application/json',
+					],
+					'data_format' => 'body',
+					'body'        => json_encode( $body )
+				)
+			);
+			$response = json_decode( $response['body'] );
+			if($response[0] !== 0) return false;
+			$credit_rial = explode( ".", $response[1] )[0];
 
+			return substr( $credit_rial, 0, - 1 );
+		}
 		static function createdb() {
 			global $wpdb;
 			$table_name = self::tableName();
