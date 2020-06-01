@@ -308,7 +308,7 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
  `l_name` tinytext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
  `phone_book` int(10) DEFAULT NULL,
  PRIMARY KEY (`id`),
- UNIQUE KEY `${table_name}_unique_phone_meta_id` (`phone`,`meta_id`,`phone_book`)
+ UNIQUE KEY `${table_name}_unique_phone_meta_id` (`phone`,`object_id`,`phone_book`)
 ) $collate";
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $query );
