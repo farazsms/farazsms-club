@@ -91,9 +91,10 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 		}
 
 		public static function get_digits_configs() {
-			$digit = get_option( "digit_ippanel" );
+			$digit = get_option( "digit_farazsms" );
 			if ( ! $digit ) {
-				$digit = get_option( "digit_farazsms" );
+				$digit = get_option( "digit_ippanel" );
+
 			}
 			if ( ! $digit ) {
 				return false;
