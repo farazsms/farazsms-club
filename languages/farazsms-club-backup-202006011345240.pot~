@@ -1,0 +1,105 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: farazsms-club\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-01 11:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.1"
+
+#: includes/class-core.php:74
+#, php-format
+msgid ""
+"<h2> Special Offer </h2>\n"
+"                 By registering in the sales cooperation system and "
+"introducing the Faraz SMS SMS system to your friends, 30% cooperation fee "
+"in\n"
+"                 Get sales.\n"
+"                 <a href=\"https://farazsms.com/affiliate\" "
+"target=\"_blank\" rel=\"noopener\"> More info and start earning money\n"
+"                     Internet </a>"
+msgstr ""
+
+#: includes/class-core.php:188
+msgid "FarazSMS Options"
+msgstr ""
+
+#: includes/class-core.php:220
+msgid "successfully saved"
+msgstr ""
+
+#: includes/class-core.php:233
+msgid "help"
+msgstr ""
+
+#: includes/class-core.php:239
+msgid "Phonebook"
+msgstr ""
+
+#: includes/class-core.php:245
+msgid "Username and password"
+msgstr ""
+
+#: includes/class-core.php:252
+msgid ""
+"<h1> Guide to Customer Club </h1>\n"
+"                <br>\n"
+"                First, log in to your account in the SMS system above SMS, "
+"from the right menu> Phonebook> Group\n"
+"                Create a new phonebook, create a unique code for each "
+"phonebook after creating the system phonebook\n"
+"                Allows the person to put the phonebook with the username, "
+"password and code on this page and save the settings.\n"
+"                From now on, the mobile number of WooCommerce and Digits "
+"customers will be automatically in the phone book of Faraz SMS SMS system.\n"
+"                Your S will be saved. If you have not yet purchased the SMS "
+"system, use the farazsms-club discount code.\n"
+"                <br>\n"
+"                <br>"
+msgstr ""
+
+#: includes/class-core.php:273
+msgid "Digits Plugin"
+msgstr ""
+
+#: includes/class-core.php:285
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/class-core.php:298
+msgid "select phone books for "
+msgstr ""
+
+#: includes/class-core.php:317 includes/class-core.php:332
+msgid "save"
+msgstr ""
+
+#. Name of the plugin
+msgid "farazsms-club"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add user meta phone number to farazsms-club phonebook"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://farazsms.com"
+msgstr ""
+
+#. Author of the plugin
+msgid ""
+"Seyyed Mahmood Ghaffari and <a href=\"https://twitter.com/sae13\">Saeb "
+"Molaee</a>"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://farazsms.com/api"
+msgstr ""

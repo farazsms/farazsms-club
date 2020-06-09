@@ -11,11 +11,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 		$this->include_all();
 		add_action( 'init', array( $this, 'add_languages_dir' ) );
 		add_action('activate_plugin',[$this,'activate_plugin']);
-//		add_action( 'get_footer', array( $this, 'load_css_farsi_font' ) );
-//		add_action( 'wp_before_admin_bar_render', array( $this, 'wpb_custom_logo' ) );
-//		add_action( 'edit_user_profile', [ $this, 'after_register' ] );
-//		add_action( 'edit_user_profile_update', [ $this, 'after_register' ] );
-//		add_action( 'activate_plugin', [ $this, 'default_options' ] );
 		add_action( 'admin_menu', [ $this, 'settings' ] );
 		add_filter('update_user_metadata',[$this,'updated_user_meta'],10,4);
 		if(class_exists('WooCommerce'))
@@ -23,8 +18,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
     if (get_transient('farazsms-club-admin_notice')){
         add_action('admin_notices',[$this,'admin_notices_activated']);
     }
-//		add_filter( 'wp_nav_menu_items', array( $this, 'user_nav_menu' ), 10, 2 );
-//		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_select2_vue' ] );
 	}
 
 	private function include_all() {
@@ -34,7 +27,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	}
 
 	static function activate_plugin(){
-//	    add_action( 'activate_plugin', [ $this, 'activate_plugin' ] );
         set_transient('farazsms-club-admin_notice',true,10);
                 FARAZSMS_CLUB_CONFIG::createdb();
 
@@ -77,74 +69,6 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
                     <?php
     }
 
-	function load_css_farsi_font() {
-		wp_enqueue_style( 'kala_fonts', FARAZSMS_CLUB_URL . 'assets/styles/fonts.css' );
-		wp_enqueue_style( 'kala_nahid_sahel_font', FARAZSMS_CLUB_URL . 'assets/styles/nahid-sahel-font.css',
-			array( 'kala_fonts' ) );
-		wp_enqueue_style( 'kala_styles', FARAZSMS_CLUB_URL . 'assets/styles/styles.css',
-			array( 'kala_fonts' ) );
-
-		wp_register_style( 'kala_gform', FARAZSMS_CLUB_URL . 'assets/styles/gravity-forms.css',
-			array( 'kala_fonts' ) );
-
-
-	}
-
-	function user_nav_menu( $nav, $args ) {
-//	    if( $args->theme_location == 'primary' )
-		/** @var LP_Order $learn_press_get_orders */
-//	    $learn_press_get_orders = learn_press_get_order(286);
-
-//	    $learn_press_get_orders.get_items();
-
-
-//	    $LP_order = new LP_Order();
-//	    $LP_order->set_user_id(3);
-//	    try {
-//		    $LP_order->save();
-//	    } catch ( Exception $e ) {
-//		    echo 1;
-//	    }
-//	    $add_item = $LP_order->add_item( 11 );
-//	    $LP_order->get_items();
-//	    $LP_order->set_status('completed');
-
-		if ( is_user_logged_in() ) {
-			$page       = get_option( 'learn_press_courses_page_id' );
-			$post       = get_post( $page );
-			$post_title = $post->post_title;
-			$link       = get_post_permalink( $page );
-
-
-			$nav = $nav . "<li class='menu-header-search'><a href='$link'>$post_title</a> </li>";
-
-		}
-		$profile_page            = get_option( 'learn_press_profile_page_id' );
-		$profile_page_post       = get_post( $profile_page );
-		$profile_page_post_title = $profile_page_post->post_title;
-
-		return $nav . "
-			 <li class='menu-header-search'><a href='/?p=$profile_page'>$profile_page_post_title</a> </li>
-			 ";
-//	    learn_press_create_order();
-
-	}
-
-	function wpb_custom_logo() {
-		?>
-        <style type="text/css">
-            #wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon:before {
-                background-image: url(' .<?php echo FARAZSMS_CLUB_URL;?> . ' assets/images/hat-small-white.png) !important;
-                background-position: 0 0;
-                color: rgba(0, 0, 0, 0);
-            }
-
-            #wpadminbar #wp-admin-bar-wp-logo.hover > .ab-item .ab-icon {
-                background-position: 0 0;
-            }
-        </style>
-		<?php
-	}
 
 	function after_register( $user_id ) {
 		$user  = get_user_meta( $user_id );
@@ -184,7 +108,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	}
 
     function settings_html() {
-	    $this->enqueue_select2_vue();
+	    $this->enqueue_bulma();
 		$configs = FARAZSMS_CLUB_CONFIG::getInstance();
 	    $options = $configs::options();
 		$plugins = array();
@@ -353,23 +277,10 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	            echo "</div>";
 	}
 
-    function enqueue_select2_vue() {
-		wp_register_style( 'select2css',
-			FARAZSMS_CLUB_URL . 'assets/styles/select2.min.css', false, '4.0.13', 'all' );
+    function enqueue_bulma() {
 		wp_register_style( 'bulma',
-			FARAZSMS_CLUB_URL . 'assets/styles/bulma/bulma.min.css', false, '0.8.2', 'all' );
-		wp_register_script( 'select2',
-			FARAZSMS_CLUB_URL . 'assets/scripts/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
-		wp_register_script( 'vue',
-			FARAZSMS_CLUB_URL . 'assets/scripts/vue.js', array( 'jquery' ), '2.6', true );
-//		wp_register_script( 'cities', FARAZSMS_CLUB_URL . 'assets/scripts/Cities.js', [ 'vue' ], '1', true );
-//		wp_register_script( 'avenue', FARAZSMS_CLUB_URL . 'assets/scripts/Avenue.js', [ 'cities' ], '1', true );
-//		wp_enqueue_script( 'cities' );
-//		wp_enqueue_script( 'avenue' );
-//		wp_enqueue_style( 'select2css' );
+			FARAZSMS_CLUB_URL . 'assets/styles/bulma.min.css', false, '0.8.2', 'all' );
 		wp_enqueue_style( 'bulma' );
-//		wp_enqueue_script( 'select2' );
-//		wp_enqueue_script( 'vue' );
 	}
 
     function updated_user_meta( $null,$object_id, $meta_key, $meta_value){
