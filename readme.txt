@@ -1,9 +1,9 @@
 ﻿=== FarazSMS-Club ===
 Contributors: saeb, farazsms
 Donate link: https://farazsms.com
-Tags: farazsms, ippanel, digits, woocommerce,sms, پیامک , فراز اس ام اس
+Tags: farazsms,ippanel,digits,woocommerce,sms
 Requires at least: 5.1
-Tested up to: 5.2
+Tested up to: 5.4
 Requires PHP: 7.0
 Stable tag: 4.3
 License: GPLv2 or later
