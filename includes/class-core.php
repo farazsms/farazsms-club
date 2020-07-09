@@ -300,7 +300,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	    $user=get_userdata($user_id);
 	    $config=FARAZSMS_CLUB_CONFIG::getInstance();
 	    $phone_books=$config::options()['general_phone_book'];
-	    if(strtolower($meta_key!=='digits_phone')) $phone_books=$config::options()['digits'];
+	    if(strtolower($meta_key === 'digits_phone')) $phone_books=$config::options()['digits'];
         foreach ($phone_books as $phone_book){
             if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) {continue;}
             $phones = array(                "phone"=>$phone,
