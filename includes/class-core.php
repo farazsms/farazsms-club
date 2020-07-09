@@ -187,13 +187,20 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
             <table class="form-table">
                 <h1><?php _e('Phonebook Configs','farazsms-club') ?></h1>
 		<?php
-		if ( $configs::isDigitsInstalled() ) {
-			$plugins['digits'] = array(
+		$plugins['general_phone_book'] = array(
 				'phoneBookId' => false,
-				'name'        => __( 'Digits Plugin', 'farazsms-club' ),
-								'phonebookAll'=>[]
+				'name'        => __( 'Genral phones Plugin', 'farazsms-club' ),
+								'phonebookAll'=>$configs::getPhoneBooks( 'general_phone_book' )
 
 			);
+		if ( $configs::isDigitsInstalled() ) {
+
+            $plugins['digits'] = array(
+                            'phoneBookId' => false,
+                            'name'        => __( 'Digits Plugin', 'farazsms-club' ),
+                                            'phonebookAll'=>[]
+
+                        );
 
 			if ( $configs->get_digits_configs() ) {
 				$plugins['digits']['phonebookAll'] = $configs::getPhoneBooks( 'digits' );
@@ -284,13 +291,16 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	}
 
     function updated_user_meta( $null,$object_id, $meta_key, $meta_value){
-	    if(strtolower($meta_key!=='digits_phone')) {return;}
-	    $phone =intval(substr($meta_value,-10));
+	    $mobile_pattern = "/^(\s)*(\+98|0098|98|0)?(9\d{9})(\s*|$)/";
+        preg_match($mobile_pattern,$meta_value,$matches);
+	    if(strtolower($meta_key!=='digits_phone') && sizeof($matches) !== 5) {return;}
+	    $phone =intval($matches[3]);
 	    if ($phone < 9000000000  ){return;}
 	    $user_id = intval($object_id);
 	    $user=get_userdata($user_id);
 	    $config=FARAZSMS_CLUB_CONFIG::getInstance();
-	    $phone_books=$config::options()['digits'];
+	    $phone_books=$config::options()['general_phone_book'];
+	    if(strtolower($meta_key!=='digits_phone')) $phone_books=$config::options()['digits'];
         foreach ($phone_books as $phone_book){
             if(FARAZSMS_CLUB_CONFIG::db_find_one($phone,$phone_book)) {continue;}
             $phones = array(                "phone"=>$phone,
@@ -301,6 +311,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	                                        "phone_book"=>$phone_book
 	                                        );
             if($config::save_to_digits_phone_book($phone,$phone_book)) {$config::db_save($phones);}
+            elseif($config::save_to_general_phone_book($phone,$phone_book)) {$config::db_save($phones);}
         }
     }
     function woo_payment_finished($id){

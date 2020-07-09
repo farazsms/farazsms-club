@@ -204,7 +204,8 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 			if ( strpos( strtolower( $plugin ), 'digit' ) !== false ) {
 				$uname = self::$_digits_uname;
 				$pass  = self::$_digits_password;
-			} elseif ( strtolower( $plugin ) == 'woo' ) {
+			}
+			elseif ( strtolower( $plugin ) == 'woo' ) {
 				if ( self::isWooSmsInstalled() ) {
 					$uname = self::$_woo_uname;
 					$pass  = self::$_woo_password;
@@ -212,8 +213,10 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 					$uname = self::$_options['uname'];
 					$pass  = self::$_options['pass'];
 				}
-			} else {
-				return false;
+			}
+			else {
+				$uname = self::options()['uname'];
+				$pass  = self::options()['pass'];
 			}
 			$body = array(
 				'uname' => $uname,
@@ -248,10 +251,11 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 			$options = get_option( 'farazsms_options' );
 			if ( ! $options ) {
 				$options = array(
-					"digits" => array(),
-					"woo"    => array(),
-					"umame"  => array(),
-					"pass"   => array(),
+					"digits"             => array(),
+					"woo"                => array(),
+					"umame"              => array(),
+					"pass"               => array(),
+					"general_phone_book" => array(),
 				);
 				$config  = FARAZSMS_CLUB_CONFIG::getInstance();
 				if ( $config::get_woo_sms_configs() !== false ) {
@@ -262,6 +266,9 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 					$options['pass']  = $config::digitsPassword();
 				}
 				add_option( 'farazsms_options', $options );
+			} elseif ( ! $options['general_phone_book'] ) {
+				$options['general_phone_book'] = array();
+				update_option( 'farazsms_options', $options );
 			}
 
 			return $options;
@@ -277,10 +284,11 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 				$options = get_option( 'farazsms_options' );
 				if ( ! $options ) {
 					$options = array(
-						"digits" => array(),
-						"woo"    => array(),
-						"umame"  => array(),
-						"pass"   => array(),
+						"digits"             => array(),
+						"woo"                => array(),
+						"umame"              => array(),
+						"pass"               => array(),
+						"general_phone_book" => array(),
 					);
 					if ( self::get_woo_sms_configs() !== false ) {
 						$options['uname'] = self::wooUname();
@@ -292,18 +300,21 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 					add_option( 'farazsms_options', $options );
 				}
 				self::$_options = $options;
-
 				return $options;
+			} elseif ( ! self::$_options['general_phone_book'] ) {
+				self::$_options['general_phone_book'] = array();
+				update_option( 'farazsms_options',  self::$_options );
 			}
 
 			return self::$_options;
 		}
-		public static function get_credit(){
-			$options = self::options();
-			$body  = array(
-				"uname"=>$options['uname'],
-				"pass"=>$options['pass'],
-				'op'=>'credit'
+
+		public static function get_credit() {
+			$options  = self::options();
+			$body     = array(
+				"uname" => $options['uname'],
+				"pass"  => $options['pass'],
+				'op'    => 'credit'
 			);
 			$response = wp_remote_post( self::url(), array(
 					'method'      => 'POST',
@@ -315,11 +326,14 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 				)
 			);
 			$response = json_decode( $response['body'] );
-			if($response[0] !== 0) return false;
+			if ( $response[0] !== 0 ) {
+				return false;
+			}
 			$credit_rial = explode( ".", $response[1] )[0];
 
 			return substr( $credit_rial, 0, - 1 );
 		}
+
 		static function createdb() {
 			global $wpdb;
 			$table_name = self::tableName();
@@ -401,6 +415,33 @@ if ( ! class_exists( "FARAZSMS_CLUB_CONFIG" ) ) {
 				$uname = self::wooUname();
 				$pass  = self::wooPassword();
 			}
+			$body = array(
+				'uname'       => $uname,
+				'pass'        => $pass,
+				'op'          => 'phoneBookAdd',
+				'phoneBookId' => $phone_book,
+				'number'      => $phone
+			);
+
+			$response = wp_remote_post( self::url(), array(
+					'method'      => 'POST',
+					'headers'     => [
+						'Content-Type' => 'application/json',
+					],
+					'data_format' => 'body',
+					'body'        => json_encode( $body )
+				)
+			);
+			$response = json_decode( $response['body'] );
+			if ( $response->status->code !== 0 ) {
+				return false;
+			}
+
+			return true;
+		}
+		public static function save_to_general_phone_book( $phone, $phone_book ) {
+			$uname = self::options()['uname'];
+			$pass  = self::options()['pass'];
 			$body = array(
 				'uname'       => $uname,
 				'pass'        => $pass,

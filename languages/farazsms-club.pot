@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: farazsms-club\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 13:45+0000\n"
+"POT-Creation-Date: 2020-07-09 11:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.0; wp-5.4.1"
 
-#: includes/class-core.php:68
+#: includes/class-core.php:60
 #, php-format
 msgid ""
 "<h2> Special Offer </h2>\n"
@@ -28,27 +28,27 @@ msgid ""
 "                     Internet </a>"
 msgstr ""
 
-#: includes/class-core.php:182
+#: includes/class-core.php:106
 msgid "FarazSMS Options"
 msgstr ""
 
-#: includes/class-core.php:218
+#: includes/class-core.php:142
 msgid "successfully saved"
 msgstr ""
 
-#: includes/class-core.php:229
+#: includes/class-core.php:153
 msgid "help"
 msgstr ""
 
-#: includes/class-core.php:235
+#: includes/class-core.php:159
 msgid "Phonebook"
 msgstr ""
 
-#: includes/class-core.php:241
+#: includes/class-core.php:165
 msgid "Username and password"
 msgstr ""
 
-#: includes/class-core.php:248
+#: includes/class-core.php:172
 msgid ""
 "<h1> Guide to Customer Club </h1>\n"
 "                <br>\n"
@@ -66,39 +66,43 @@ msgid ""
 "                <br>"
 msgstr ""
 
-#: includes/class-core.php:264
+#: includes/class-core.php:188
 msgid "Phonebook Configs"
 msgstr ""
 
-#: includes/class-core.php:269
+#: includes/class-core.php:192
+msgid "Genral phones Plugin"
+msgstr ""
+
+#: includes/class-core.php:200
 msgid "Digits Plugin"
 msgstr ""
 
-#: includes/class-core.php:281
+#: includes/class-core.php:212
 msgid "WooCommerce"
 msgstr ""
 
-#: includes/class-core.php:294
+#: includes/class-core.php:225
 msgid "select phone books for "
 msgstr ""
 
-#: includes/class-core.php:313 includes/class-core.php:346
+#: includes/class-core.php:244 includes/class-core.php:277
 msgid "save"
 msgstr ""
 
-#: includes/class-core.php:325
+#: includes/class-core.php:256
 msgid "Credit"
 msgstr ""
 
-#: includes/class-core.php:333
+#: includes/class-core.php:264
 msgid "It seems user name and password are not working yet are you saved them?"
 msgstr ""
 
-#: includes/class-core.php:339
+#: includes/class-core.php:270
 msgid "User Name"
 msgstr ""
 
-#: includes/class-core.php:342
+#: includes/class-core.php:273
 msgid "password"
 msgstr ""
 
