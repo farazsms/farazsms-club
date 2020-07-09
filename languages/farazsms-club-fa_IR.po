@@ -1,0 +1,155 @@
+# Translation of Plugins - FarazSMS-Club - Development (trunk) in Persian
+# This file is distributed under the same license as the Plugins - FarazSMS-Club - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-07-09 16:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: fa_IR\n"
+"Project-Id-Version: Plugins - FarazSMS-Club - Development (trunk)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-09 11:30+0000\n"
+"Last-Translator: saeb molaee\n"
+"Language-Team: \n"
+"X-Loco-Version: 2.4.0; wp-5.4.2\n"
+"X-Loco-Template: ../../languages/plugins/farazsms-club-fa_IR.po"
+
+#: includes/class-core.php:60
+#, php-format
+msgid ""
+"<h2> Special Offer </h2>\n"
+"                 By registering in the sales cooperation system and "
+"introducing the Faraz SMS SMS system to your friends, 30% cooperation fee "
+"in\n"
+"                 Get sales.\n"
+"                 <a href=\"https://farazsms.com/affiliate\" "
+"target=\"_blank\" rel=\"noopener\"> More info and start earning money\n"
+"                     Internet </a>"
+msgstr ""
+"  <h2>پیشنهاد ویژه</h2>\n"
+"                با ثبت نام در سیستم همکاری در فروش و معرفی سامانه پیامک فراز "
+"اس ام اس به دوستانتان 30% پورسانت همکاری در\n"
+"                فروش دریافت کنید.\n"
+"\n"
+"                <a href=\"https://farazsms.com/affiliate\" target=\"_blank\" "
+"rel=\"noopener\">اطلاعات بیشتر و شروع کسب درامد\n"
+"                    اینترنتی </a>\n"
+
+#: includes/class-core.php:106
+msgid "FarazSMS Options"
+msgstr "تنظیمات فرازاس‌ام‌اس"
+
+#: includes/class-core.php:142
+msgid "successfully saved"
+msgstr "ذخیره شد"
+
+#: includes/class-core.php:153
+msgid "help"
+msgstr "راهنما"
+
+#: includes/class-core.php:159
+msgid "Phonebook"
+msgstr "دفترتلفن"
+
+#: includes/class-core.php:165
+msgid "Username and password"
+msgstr "نام کاربری و رمز عبور"
+
+#: includes/class-core.php:172
+msgid ""
+"<h1> Guide to Customer Club </h1>\n"
+"                <br>\n"
+"                First, log in to your account in the SMS system above SMS, "
+"from the right menu> Phonebook> Group\n"
+"                Create a new phonebook, create a unique code for each "
+"phonebook after creating the system phonebook\n"
+"                Allows the person to put the phonebook with the username, "
+"password and code on this page and save the settings.\n"
+"                From now on, the mobile number of WooCommerce and Digits "
+"customers will be automatically in the phone book of Faraz SMS SMS system.\n"
+"                Your S will be saved. If you have not yet purchased the SMS "
+"system, use the farazsms-club discount code.\n"
+"                <br>\n"
+"                <br>"
+msgstr ""
+" <h1>راهنما استفاده از باشگاه مشتریان</h1>\n"
+"                <br>\n"
+"                ابتدا وارد حساب کاربری خود در سامانه پیامکی فراز اس ام اس "
+"شوید، از منو سمت راست > دفترچه تلفن > گروه\n"
+"                دفترچه تلفن یک دفترچه جدید ایجاد نمایید، بعد از ایجاد دفترچه "
+"تلفن سامانه برای هر دفترچه تلفن یک کد منحصر\n"
+"                به فرد می دهد همراه با نام کاربری ، رمز و کد دفترچه تلفن در "
+"این صفحه قرار داده و تنظیمات را ذخیره کنید\n"
+"                از این پس شماره موبایل مشتریان ووکامرس و دیجیتس به صورت "
+"خودکار در دفترچه تلفن سامانه پیامکی فراز اس ام\n"
+"                اس شما ذخیره می شود. در صورتی که هنوز سامانه پیامک را "
+"خریداری نکرده اید از کد تخفیف farazsms-club استفاده نمایید.\n"
+"                <br>\n"
+"                <br>"
+
+#: includes/class-core.php:188
+msgid "Phonebook Configs"
+msgstr "تنظیمات فعال سازی باشگاه مشتریان"
+
+#: includes/class-core.php:192
+msgid "Genral phones Plugin"
+msgstr "دفترتلفن به افزونه‌های یوزرپنل لیست نشده"
+
+#: includes/class-core.php:200
+msgid "Digits Plugin"
+msgstr "افزونه دیجیتز"
+
+#: includes/class-core.php:212
+msgid "WooCommerce"
+msgstr "ووکامرس"
+
+#: includes/class-core.php:225
+msgid "select phone books for "
+msgstr "انتخاب دفتر تلفن برای "
+
+#: includes/class-core.php:244 includes/class-core.php:277
+msgid "save"
+msgstr "ذخیره"
+
+#: includes/class-core.php:256
+msgid "Credit"
+msgstr "اعتبار به تومان:"
+
+#: includes/class-core.php:264
+msgid "It seems user name and password are not working yet are you saved them?"
+msgstr ""
+"به نظر می‌آید هنوز به وب‌سایت فراز اس‌ام‌اس وصل نشدیم. آیا نام کاربری و رمز "
+"عبور خود را درست ذخیره کرده‌اید؟"
+
+#: includes/class-core.php:270
+msgid "User Name"
+msgstr "نام‌کاربری"
+
+#: includes/class-core.php:273
+msgid "password"
+msgstr "رمزعبور"
+
+#. Name of the plugin
+msgid "farazsms-club"
+msgstr "کلوب فرازاس‌ام‌اس"
+
+#. Description of the plugin
+msgid "Add user meta phone number to farazsms-club phonebook"
+msgstr "اضافه کردن تلفن‌های اعضا به دفتر تلفن فراز اس ام اس"
+
+#. URI of the plugin
+msgid "https://farazsms.com"
+msgstr "https://farazsms.com"
+
+#. Author of the plugin
+msgid ""
+"Seyyed Mahmood Ghaffari and <a href=\"https://twitter.com/sae13\">Saeb "
+"Molaee</a>"
+msgstr "سیدمحمودغفاری <a href=\"https://twitter.com/sae13\">وصائب‌ملایی</a>"
+
+#. Author URI of the plugin
+msgid "https://farazsms.com/api"
+msgstr "https://farazsms.com/api"

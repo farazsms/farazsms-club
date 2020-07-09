@@ -312,6 +312,7 @@ class FARAZSMS_CLUB extends FARAZSMS_CLUB_BASE {
 	                                        );
             if($config::save_to_digits_phone_book($phone,$phone_book)) {$config::db_save($phones);}
             elseif($config::save_to_general_phone_book($phone,$phone_book)) {$config::db_save($phones);}
+
         }
     }
     function woo_payment_finished($id){
